@@ -54,6 +54,11 @@ module.exports = {
           '/API': ''
         }
       }
+    },
+    overlay: {
+      warnings: false,
+      errors: false
     }
-  }
+  },
+  lintOnSave: false
 }

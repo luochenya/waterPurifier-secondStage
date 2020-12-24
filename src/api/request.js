@@ -24,6 +24,7 @@ axios.defaults.baseM1URL = domain.Base_M1_URL
 // ->2,模块二接口,url地址
 axios.defaults.baseM2URL = domain.Base_M2_URL
 axios.defaults.baseM3URL = domain.Base_M3_URL
+axios.defaults.baseM4URL = domain.Base_M4_URL
 // 请求超时时间
 axios.defaults.timeout = 10000
 
@@ -230,6 +231,18 @@ function requireData2 (url, params, item) {
       .catch(err => {
         reject(err)
       })
+  })
+}
+export function cascadePost (url, data) {
+  return new Promise((resolve, reject) => {
+    axios.post(axios.defaults.baseM4URL + url, QS.stringify(data)).then(
+      response => {
+        resolve(response.data)
+      },
+      err => {
+        reject(err)
+      }
+    )
   })
 }
 // ->接口1的请求数据方法
